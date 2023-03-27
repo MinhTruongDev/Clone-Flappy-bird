@@ -14,7 +14,7 @@ public class GameControl : MonoBehaviour
     private int score = 0;
     private int highscore = 0;
     bool isEndGame;
-
+    
     private void Awake()
     {
         instance = this;
@@ -26,28 +26,40 @@ public class GameControl : MonoBehaviour
         txtPlayAgain.text = "Hit space to jump";
         txtHighScore.text = "Highscore: " + highscore.ToString();
         isEndGame = false;
+        
 
     }
 
     private void Update()
     {
-        if (isEndGame)
+        ControlGame();
+    }
+    
+    private void ControlGame()
+    {
+        switch(isEndGame)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                //Reload the scene
-                SceneManager.LoadScene(0);
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Time.timeScale = 1;
-                txtPlayAgain.text = "";
-            }
-
-        }
+            case true:
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        //Reload the scene
+                        SceneManager.LoadScene(0);
+                    }
+                    break;
+                }
+            case false:
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        Time.timeScale = 1;
+                        txtPlayAgain.text = "";
+                    }
+                    break;
+                }
+            default:
+                break;
+        }        
     }
 
     public void EndGame()

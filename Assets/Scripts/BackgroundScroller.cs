@@ -7,18 +7,18 @@ public class BackgroundScroller : MonoBehaviour
 {
     [SerializeField]
     float scrollSpeed = 1f;
+
     [SerializeField]
     float backgroundCount = 2f;
-    [SerializeField]  
+
+    [SerializeField]
     float backgroundWidth;
-   
 
     // Update is called once per frame
     void Update()
-    {        
+    {
         Scroller();
-    } 
-
+    }
 
     private void Scroller()
     {
